@@ -1,0 +1,16 @@
+.section {
+  margin-top: 4%;
+}
+.section h3 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1%;
+}
+.tick {
+  cursor: pointer;
+  border: 5px inset #232323;
+  height: 150px;
+  line-height: 150px;
+  font-size: 4em;
+  text-align: center;
+}
