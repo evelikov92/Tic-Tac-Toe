@@ -2,7 +2,7 @@ let model = (function () {
   return {
     cpuCharacter: 'O',
     userCharacter: 'X',
-    freeCells: [2, 6, 8, 0, 4, 1, 3, 5, 7],
+    freeCells: [],
     userCells: [],
     cpuCells: [],
     winningCombinations: [
@@ -14,6 +14,10 @@ let model = (function () {
       [2, 5, 8],
       [0, 4, 8],
       [2, 4, 6]
+    ],
+    possibleCpuPaths: [
+      [2, 6, 8, 0, 4, 1, 3, 5, 7],
+      [8, 0, 2, 6, 4, 1, 5, 3, 7]
     ]
   }
 })()
@@ -50,6 +54,10 @@ let controller = (function () {
   }
 
   return {
+    init: () => {
+      let index = parseInt(Math.random() * model.possibleCpuPaths.length)
+      model.freeCells = model.possibleCpuPaths[index]
+    },
     getCpuCharacter: () => {
       return model.cpuCharacter
     },
@@ -152,6 +160,7 @@ let view = (function () {
 
   return {
     init: () => {
+      controller.init()
       setTimeout(() => {
         document.getElementById(controller.getFreeCell(0)).innerHTML = controller.getCpuCharacter()
         controller.setCpuMove(0)
