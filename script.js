@@ -50,8 +50,12 @@ let controller = (function () {
   }
 
   return {
-    getCpuCharacter: () => { return model.cpuCharacter },
-    getUserCharacter: () => { return model.userCharacter },
+    getCpuCharacter: () => {
+      return model.cpuCharacter
+    },
+    getUserCharacter: () => {
+      return model.userCharacter
+    },
     setCpuMove: index => {
       model.cpuCells.push(model.freeCells[index])
       model.freeCells.splice(index, 1)
@@ -66,8 +70,12 @@ let controller = (function () {
         }
       }
     },
-    getFreeCell: index => { return model.freeCells[index] },
-    removeFreeCell: index => { model.freeCells.splice(index, 1) },
+    getFreeCell: index => {
+      return model.freeCells[index]
+    },
+    removeFreeCell: index => {
+      model.freeCells.splice(index, 1)
+    },
     checkForWinner: () => {
       model.userCells.sort()
       model.cpuCells.sort()
@@ -137,8 +145,6 @@ let view = (function () {
             window.alert('The result is Draw')
             window.location.reload(false)
           }
-        } else {
-
         }
       })
     }
