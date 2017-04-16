@@ -87,11 +87,11 @@ let controller = (function () {
       let arr = []
 
       arr = getDefenseMove(model.cpuCells)
-      if (arr.length === 0) {
+      if (!arr || arr.length === 0) {
         arr = getDefenseMove(model.userCells)
       }
 
-      if (arr.length === 0) {
+      if (!arr || arr.length === 0) {
         let nextMove = model.freeCells[0]
         model.freeCells.splice(0, 1)
         model.cpuCells.push(nextMove)
@@ -121,7 +121,7 @@ let view = (function () {
           }
 
           setTimeout(() => {
-            let id = controller.checkNextCpuMove()
+            let id = controller.checkForNextCpuMove()
             document.getElementById(id).innerHTML = controller.getCpuCharacter()
 
             if (controller.checkForWinner() === 'Cpu') {
